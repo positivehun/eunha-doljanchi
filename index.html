@@ -414,17 +414,17 @@
     text-align: center;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 900px) and (min-width: 431px) {
     body { padding-bottom: calc(230px + env(safe-area-inset-bottom)); }
     #now { flex-direction: column; align-items: stretch; }
     #now .transport { min-width: 0; }
     #toast { bottom: calc(240px + env(safe-area-inset-bottom)); }
   }
-  @media (max-width: 640px) {
+  @media (max-width: 640px) and (min-width: 431px) {
     .say { font-size: 1.08rem; }
     h2 { font-size: 1.35rem; }
   }
-  @media (pointer: coarse) {
+  @media (pointer: coarse) and (min-width: 431px) {
     .transport button { min-height: 60px; font-size: 1.12rem; }
     #now .transport button { min-height: 56px; font-size: 1.05rem; }
     .extra, .grabs button, .ghost, .folder-btn, .jumps a { min-height: 48px; }
@@ -435,6 +435,114 @@
   }
   @media (min-width: 900px) {
     .say { font-size: 1.28rem; }
+  }
+
+  /* iPhone 14 Pro: 393×852, 다이내믹 아일랜드와 홈 표시줄 */
+  @media (max-width: 430px) {
+    html { scroll-padding-top: calc(52px + env(safe-area-inset-top)); }
+    body {
+      padding-bottom: calc(78px + env(safe-area-inset-bottom));
+      overflow-x: hidden;
+    }
+    .wrap {
+      width: auto;
+      margin: 0 max(12px, env(safe-area-inset-right)) 0 max(12px, env(safe-area-inset-left));
+    }
+    .hero { padding: calc(8px + env(safe-area-inset-top)) 0 2px; }
+    .eyebrow { letter-spacing: 0.08em; font-size: 0.72rem; }
+    h1 { font-size: 1.65rem; }
+    .lede { margin-top: 6px; font-size: 0.92rem; line-height: 1.45; }
+    .tools { gap: 8px; margin-top: 10px; }
+    .vol {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 6px 12px;
+      white-space: nowrap;
+    }
+    .vol input { flex: 1 1 auto; width: auto; min-width: 72px; height: 28px; }
+    .ghost, .folder-btn { flex: 0 0 auto; justify-content: center; min-height: 44px; }
+    .folder-note { font-size: 0.82rem; line-height: 1.4; }
+    .jumps {
+      position: sticky;
+      top: 0;
+      z-index: 6;
+      margin: 0 -12px;
+      padding: 8px 12px;
+      background: rgba(243, 239, 230, 0.96);
+      backdrop-filter: blur(12px);
+    }
+    .jumps a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 0.7rem;
+      font-size: 0.86rem;
+    }
+    .help { margin: 6px 0 12px; padding: 0.55rem 0.75rem; }
+    main { gap: 12px; }
+    .cue {
+      border-radius: 18px;
+      padding: 0.85rem 0.85rem 0.95rem;
+      scroll-margin-top: calc(52px + env(safe-area-inset-top));
+    }
+    h2 { font-size: 1.28rem; }
+    .mood { font-size: 0.86rem; }
+    .transport-wrap {
+      top: 48px;
+      margin: 0.65rem -0.85rem 0.7rem;
+      padding: 0.4rem 0.85rem 0.5rem;
+    }
+    .transport { gap: 6px; }
+    .transport button { min-height: 48px; border-radius: 12px; font-size: 0.98rem; }
+    .say { font-size: 1.12rem; line-height: 1.7; }
+    .q h3 { font-size: 1.05rem; }
+    .action { font-size: 0.88rem; }
+    .grabs { display: grid; grid-template-columns: 1fr; }
+    .grabs button {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.45rem 0.8rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+    #now {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+      padding-left: max(10px, env(safe-area-inset-left));
+      padding-right: max(10px, env(safe-area-inset-right));
+    }
+    .now-copy { flex: 1 1 auto; }
+    #now-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 0.86rem;
+    }
+    #now-sub { display: none; }
+    .eq { margin-bottom: 0; }
+    #now .transport { flex: 0 0 198px; min-width: 198px; gap: 4px; }
+    #now .transport button { min-height: 44px; font-size: 0.78rem; border-radius: 10px; padding: 0 2px; }
+    #toast { bottom: calc(86px + env(safe-area-inset-bottom)); }
+  }
+  @media (max-height: 430px) and (orientation: landscape) {
+    .hero { padding-top: calc(4px + env(safe-area-inset-top)); }
+    h1 { font-size: 1.35rem; }
+    .lede { display: none; }
+    .help { display: none; }
+    .say { font-size: 1.05rem; line-height: 1.55; }
+    body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+    #now {
+      flex-direction: row;
+      align-items: center;
+      padding-left: max(10px, env(safe-area-inset-left));
+      padding-right: max(10px, env(safe-area-inset-right));
+    }
+    #now-sub { display: none; }
+    #now .transport { flex: 0 0 198px; min-width: 198px; }
+    #now .transport button { min-height: 40px; font-size: 0.78rem; }
+    #toast { bottom: calc(72px + env(safe-area-inset-bottom)); }
   }
   @media (hover: hover) {
     .play:hover { background: var(--green-deep); }
