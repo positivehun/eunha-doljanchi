@@ -684,17 +684,17 @@
         <p class="who">아빠</p>
         <p class="say">“자, 이제 돌잔치의 하이라이트! 돌잡이 순서입니다. 천자문과 붓, 마패와 판사봉, 활과 화살, 명주실, 화폐엽전, 오방색지와 오방실패, 그리고 청진기를 준비했는데요. 과연 은하가 뭘 집을지 다 함께 지켜봐 주세요. 은하야~ 맘에 드는 거 하나 집어봐!”</p>
         <p class="action">은하가 물건을 집은 후</p>
-        <p class="say">“와! 은하가 <b id="grab-a">[잡은 물건]을</b> 잡았습니다! <b id="grab-b">[잡은 물건]</b> 잡았으니까 앞으로 건강하고 멋지게 잘 자랄 것 같습니다! 축하 박수 부탁드립니다!”</p>
+        <p class="say">“와! 은하가 <b id="grab-a">[잡은 물건]을</b> 잡았습니다! <b id="grab-b">[그 물건의 뜻]</b> 축하 박수 부탁드립니다!”</p>
         <div class="grabs" role="group" aria-label="은하가 집은 물건">
-          <button type="button" data-grab="천자문과 붓" aria-pressed="false">천자문과 붓</button>
-          <button type="button" data-grab="마패와 판사봉" aria-pressed="false">마패와 판사봉</button>
-          <button type="button" data-grab="활과 화살" aria-pressed="false">활과 화살</button>
-          <button type="button" data-grab="명주실" aria-pressed="false">명주실</button>
-          <button type="button" data-grab="화폐엽전" aria-pressed="false">화폐엽전</button>
-          <button type="button" data-grab="오방색지와 오방실패" aria-pressed="false">오방색지와 오방실패</button>
-          <button type="button" data-grab="청진기" aria-pressed="false">청진기</button>
+          <button type="button" data-grab="천자문과 붓" data-meaning="천자문과 붓은 학업에 뛰어날 것을 의미합니다. 앞으로 교수, 박사, 학자로 자랄 것 같습니다!" aria-pressed="false">천자문과 붓</button>
+          <button type="button" data-grab="마패와 판사봉" data-meaning="마패와 판사봉은 고위 공직자나 나랏일을 할 것을 의미합니다. 앞으로 공무원, 판사, 검사로 자랄 것 같습니다!" aria-pressed="false">마패와 판사봉</button>
+          <button type="button" data-grab="활과 화살" data-meaning="활과 화살은 용맹하고 정의롭게 자라날 것을 의미합니다. 앞으로 군인, 운동선수로 자랄 것 같습니다!" aria-pressed="false">활과 화살</button>
+          <button type="button" data-grab="명주실" data-meaning="명주실은 건강과 장수, 무병장수를 의미합니다. 앞으로 아무 탈 없이 건강하게 자랄 것 같습니다!" aria-pressed="false">명주실</button>
+          <button type="button" data-grab="화폐엽전" data-meaning="화폐엽전은 부유하고 넉넉한 삶을 의미합니다. 앞으로 기업인, 상인, 자영업자로 자랄 것 같습니다!" aria-pressed="false">화폐엽전</button>
+          <button type="button" data-grab="오방색지와 오방실패" data-meaning="오방색지와 오방실패는 손재주가 좋고 다재다능할 것을 의미합니다. 앞으로 예술가, 연예인으로 자랄 것 같습니다!" aria-pressed="false">오방색지와 오방실패</button>
+          <button type="button" data-grab="청진기" data-meaning="청진기는 사람의 건강을 챙겨 주는 의사를 의미합니다. 앞으로 의사로 자랄 것 같습니다!" aria-pressed="false">청진기</button>
         </div>
-        <p class="grab-help">집은 물건을 누르면 윗줄 대본이 채워집니다.</p>
+        <p class="grab-help">집은 물건을 누르면 그 뜻에 맞는 멘트가 윗줄에 채워집니다.</p>
       </div>
     </article>
 
@@ -1303,13 +1303,14 @@
     }
   }
 
-  function selectGrab(name) {
+  function selectGrab(button) {
+    const name = button.dataset.grab;
     const code = name.charCodeAt(name.length - 1);
     const particle = (code - 0xac00) % 28 ? '을' : '를';
     document.querySelector('#grab-a').textContent = name + particle;
-    document.querySelector('#grab-b').textContent = name;
-    document.querySelectorAll('[data-grab]').forEach(function (button) {
-      button.setAttribute('aria-pressed', button.dataset.grab === name ? 'true' : 'false');
+    document.querySelector('#grab-b').textContent = button.dataset.meaning;
+    document.querySelectorAll('[data-grab]').forEach(function (item) {
+      item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
     });
   }
 
@@ -1570,7 +1571,7 @@
   document.addEventListener('click', function (event) {
     const grab = event.target.closest('[data-grab]');
     if (grab) {
-      selectGrab(grab.dataset.grab);
+      selectGrab(grab);
       return;
     }
     const clearBtn = event.target.closest('[data-clear]');
