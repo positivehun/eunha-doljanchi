@@ -347,11 +347,12 @@
   .grabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 0.8rem; }
   .grabs button {
     min-height: 48px;
-    padding: 0.35rem 0.9rem;
+    padding: 0.45rem 1rem;
     border-radius: 999px;
     border: 1px solid #e0d3bf;
     background: white;
     font-weight: 800;
+    line-height: 1.35;
   }
   .grabs button[aria-pressed="true"] {
     background: var(--green);
@@ -681,15 +682,17 @@
       </div>
       <div class="script">
         <p class="who">아빠</p>
-        <p class="say">“자, 이제 돌잔치의 하이라이트! 돌잡이 순서입니다. 청진기, 판사봉, 마이크, 돈, 실타래를 준비했는데요. 과연 은하가 뭘 집을지 다 함께 지켜봐 주세요. 은하야~ 맘에 드는 거 하나 집어봐!”</p>
+        <p class="say">“자, 이제 돌잔치의 하이라이트! 돌잡이 순서입니다. 천자문과 붓, 마패와 판사봉, 활과 화살, 명주실, 화폐엽전, 오방색지와 오방실패, 그리고 청진기를 준비했는데요. 과연 은하가 뭘 집을지 다 함께 지켜봐 주세요. 은하야~ 맘에 드는 거 하나 집어봐!”</p>
         <p class="action">은하가 물건을 집은 후</p>
         <p class="say">“와! 은하가 <b id="grab-a">[잡은 물건]을</b> 잡았습니다! <b id="grab-b">[잡은 물건]</b> 잡았으니까 앞으로 건강하고 멋지게 잘 자랄 것 같습니다! 축하 박수 부탁드립니다!”</p>
         <div class="grabs" role="group" aria-label="은하가 집은 물건">
+          <button type="button" data-grab="천자문과 붓" aria-pressed="false">천자문과 붓</button>
+          <button type="button" data-grab="마패와 판사봉" aria-pressed="false">마패와 판사봉</button>
+          <button type="button" data-grab="활과 화살" aria-pressed="false">활과 화살</button>
+          <button type="button" data-grab="명주실" aria-pressed="false">명주실</button>
+          <button type="button" data-grab="화폐엽전" aria-pressed="false">화폐엽전</button>
+          <button type="button" data-grab="오방색지와 오방실패" aria-pressed="false">오방색지와 오방실패</button>
           <button type="button" data-grab="청진기" aria-pressed="false">청진기</button>
-          <button type="button" data-grab="판사봉" aria-pressed="false">판사봉</button>
-          <button type="button" data-grab="마이크" aria-pressed="false">마이크</button>
-          <button type="button" data-grab="돈" aria-pressed="false">돈</button>
-          <button type="button" data-grab="실타래" aria-pressed="false">실타래</button>
         </div>
         <p class="grab-help">집은 물건을 누르면 윗줄 대본이 채워집니다.</p>
       </div>
